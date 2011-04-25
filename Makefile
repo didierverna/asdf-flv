@@ -19,10 +19,12 @@
 
 ### Code:
 
+PROJECT := asdf-flv
 VERSION := 1.0
-W3DIR := $(HOME)/www/software/lisp/asdf-flv
 
-DIST_NAME := asdf-flv-$(VERSION)
+W3DIR := $(HOME)/www/software/lisp/$(PROJECT)
+
+DIST_NAME := $(PROJECT)-$(VERSION)
 TARBALL   := $(DIST_NAME).tar.gz
 SIGNATURE := $(TARBALL).asc
 
@@ -37,7 +39,7 @@ distclean: clean
 
 update-version:
 	perl -pi -e 's/:version ".*"/:version "$(VERSION)"/' \
-	  com.dvlsoft.asdf-flv.asd
+	  com.dvlsoft.$(PROJECT).asd
 
 tag:
 	git tag -a -m 'Version $(VERSION)' 'version-$(VERSION)'
@@ -50,10 +52,10 @@ install-www: dist
 	-install -m 644 $(TARBALL)   "$(W3DIR)/attic/"
 	-install -m 644 $(SIGNATURE) "$(W3DIR)/attic/"
 	echo "\
-<? lref (\"asdf-flv/attic/asdf-flv-$(VERSION).tar.gz\", \
+<? lref (\"$(PROJECT)/attic/$(PROJECT)-$(VERSION).tar.gz\", \
 	 contents (\"Dernière version\", \"Latest version\")); ?> \
 | \
-<? lref (\"asdf-flv/attic/asdf-flv-$(VERSION).tar.gz.asc\", \
+<? lref (\"$(PROJECT)/attic/$(PROJECT)-$(VERSION).tar.gz.asc\", \
 	 contents (\"Signature GPG\", \"GPG Signature\")); ?>" \
 	  > "$(W3DIR)/latest.txt"
 	chmod 644 "$(W3DIR)/latest.txt"
@@ -72,7 +74,7 @@ $(SIGNATURE): $(TARBALL)
 	gpg -b -a $<
 
 
-.PHONY: all update-version tag tar gpg dist
+.PHONY: all clean distclean update-version tag tar gpg dist
 
 
 ### Makefile ends here
