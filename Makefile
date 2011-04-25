@@ -29,6 +29,12 @@ SIGNATURE := $(TARBALL).asc
 
 all:
 
+clean:
+	-rm *~
+
+distclean: clean
+	-rm *.tar.gz *.tar.gz.asc
+
 update-version:
 	perl -pi -e 's/:version ".*"/:version "$(VERSION)"/' \
 	  com.dvlsoft.asdf-flv.asd
