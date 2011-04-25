@@ -33,7 +33,7 @@ that any modification to the variable becomes essentially file-local.
 In order to make a variable file-local, use MAKE-VARIABLE-FILE-LOCAL."
     :author "Didier Verna <didier@lrde.epita.fr>"
     :maintainer "Didier Verna <didier@lrde.epita.fr>"
-    :license "Public Domain"
+    :license "GNU All Permissive"
     :version "1.0"
     :serial t
     :components ((:file "package")
