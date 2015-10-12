@@ -1,9 +1,8 @@
 ;;; asdf-flv.lisp --- Implementation
 
-;; Copyright (C) 2011 Didier Verna
+;; Copyright (C) 2011, 2015 Didier Verna
 
-;; Author:        Didier Verna <didier@lrde.epita.fr>
-;; Maintainer:    Didier Verna <didier@lrde.epita.fr>
+;; Author: Didier Verna <didier@didierverna.net>
 
 ;; This file is part of ASDF-FLV.
 
@@ -19,7 +18,7 @@
 
 ;;; Code:
 
-(in-package :com.dvlsoft.asdf-flv)
+(in-package :net.didierverna.asdf-flv)
 
 
 (defvar *file-local-variables* ()
@@ -42,6 +41,5 @@
   (progv *file-local-variables*
       (mapcar #'symbol-value *file-local-variables*)
     (call-next-method)))
-
 
 ;;; asdf-flv.lisp ends here

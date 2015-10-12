@@ -1,9 +1,8 @@
 ;;; package.lisp --- Package definition
 
-;; Copyright (C) 2011 Didier Verna
+;; Copyright (C) 2011, 2015 Didier Verna
 
-;; Author:        Didier Verna <didier@lrde.epita.fr>
-;; Maintainer:    Didier Verna <didier@lrde.epita.fr>
+;; Author: Didier Verna <didier@didierverna.net>
 
 ;; This file is part of ASDF-FLV.
 
@@ -21,9 +20,8 @@
 
 (in-package :cl-user)
 
-(defpackage :com.dvlsoft.asdf-flv
-    (:use :cl)
+(defpackage :net.didierverna.asdf-flv
+  (:use :cl)
   (:export :make-variable-file-local))
-
 
 ;;; package.lisp ends here

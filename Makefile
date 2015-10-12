@@ -1,9 +1,8 @@
-### Makefile --- ASDF-FLV
+### Makefile --- Toplevel directory
 
-## Copyright (C) 2011 Didier Verna
+## Copyright (C) 2011, 2015 Didier Verna
 
-## Author:        Didier Verna <didier@lrde.epita.fr>
-## Maintainer:    Didier Verna <didier@lrde.epita.fr>
+## Author: Didier Verna <didier@didierverna.net>
 
 ## This file is part of ASDF-FLV.
 
@@ -37,10 +36,6 @@ clean:
 distclean: clean
 	-rm *.tar.gz *.tar.gz.asc
 
-update-version:
-	perl -pi -e 's/:version ".*"/:version "$(VERSION)"/' \
-	  com.dvlsoft.$(PROJECT).asd
-
 tag:
 	git tag -a -m 'Version $(VERSION)' 'version-$(VERSION)'
 
@@ -59,14 +54,16 @@ install-www: dist
 	 contents (\"Signature GPG\", \"GPG Signature\")); ?>" \
 	  > "$(W3DIR)/latest.txt"
 	chmod 644 "$(W3DIR)/latest.txt"
-#	git push --tags "$(W3DIR)/clon.git" :
-#	$(MAKE) gen TARGET=install-www
 	cd "$(W3DIR)"					\
 	  && ln -fs attic/$(TARBALL) latest.tar.gz	\
 	  && ln -fs attic/$(SIGNATURE) latest.tar.gz.asc
 
+update-version:
+	perl -pi -e 's/:version ".*"/:version "$(VERSION)"/' \
+	  net.didierverna.$(PROJECT).asd
+
 $(TARBALL):
-	git archive --format=tar --prefix=$(DIST_NAME)/	\
+	git archive --format=tar --prefix=$(DIST_NAME)/ \
 	    --worktree-attributes HEAD			\
 	  | gzip -c > $@
 
@@ -74,7 +71,6 @@ $(SIGNATURE): $(TARBALL)
 	gpg -b -a $<
 
 
-.PHONY: all clean distclean update-version tag tar gpg dist
-
+.PHONY: all clean distclean tag tar gpg dist install-www update-version
 
 ### Makefile ends here
