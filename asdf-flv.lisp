@@ -24,9 +24,27 @@
 (defvar *file-local-variables* ()
   "List of file-local special variables.")
 
+
 (defun make-variable-file-local (symbol)
   "Make special variable named by SYMBOL have a file-local value."
   (pushnew symbol *file-local-variables*))
+
+(defmacro set-file-local-variable (symbol)
+  "Set special variable named by SYMBOL as file-local.
+SYMBOL need not be quoted."
+  `(make-variable-file-local ',symbol))
+
+(defun make-variables-file-local (&rest symbols)
+  "Make special variables named by SYMBOLS have a file-local value."
+  (dolist (symbol symbols)
+    (pushnew symbol *file-local-variables*)))
+
+(defmacro set-file-local-variables (&rest symbols)
+  "Set special variables named by SYMBOLS as file-local.
+SYMBOLS need not be quoted."
+  `(make-variables-file-local ,@(mapcar (lambda (symbol) (list 'quote symbol))
+					symbols)))
+
 
 (defmethod asdf:perform :around
     ((operation asdf:load-op) (file asdf:cl-source-file))

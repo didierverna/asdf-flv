@@ -27,8 +27,8 @@ variable behaves like *PACKAGE* and *READTABLE* with respect to LOAD and
 COMPILE-FILE: a new dynamic binding is created before processing the file, so
 that any modification to the variable becomes essentially file-local.
 
-In order to make a variable file-local, use the function
-MAKE-VARIABLE-FILE-LOCAL."
+In order to make one or several variables file-local, use the macros
+SET-FILE-LOCAL-VARIABLE(S)."
   :author "Didier Verna"
   :mailto "didier@didierverna.net"
   :homepage "http://www.lrde.epita.fr/~didier/software/lisp/misc.php#asdf-flv"

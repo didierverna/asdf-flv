@@ -22,6 +22,6 @@
 
 (defpackage :net.didierverna.asdf-flv
   (:use :cl)
-  (:export :make-variable-file-local))
+  (:export :set-file-local-variable :set-file-local-variables))
 
 ;;; package.lisp ends here
