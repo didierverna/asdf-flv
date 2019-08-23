@@ -1,3 +1,4 @@
+;;;; -*- Mode: LISP; Syntax: Ansi-Common-Lisp; Base: 10; -*-
 ;;; net.didierverna.asdf-flv.asd --- ASDF system definition
 
 ;; Copyright (C) 2011, 2015 Didier Verna
@@ -41,3 +42,4 @@ SET-FILE-LOCAL-VARIABLE(S)."
 	       (:file "asdf-flv")))
 
 ;;; net.didierverna.asdf-flv.asd ends here
+
