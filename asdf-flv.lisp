@@ -1,4 +1,4 @@
-;;; asdf-flv.lisp --- Implementation
+;;;; -*- Mode: LISP; Syntax: Ansi-Common-Lisp; Package: NET.DIDIERVERNA.ASDF-FLV; Base: 10; -*-
 
 ;; Copyright (C) 2011, 2015 Didier Verna
 
