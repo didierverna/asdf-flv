@@ -1,6 +1,7 @@
 ;;;; -*- Mode: LISP; Syntax: Ansi-Common-Lisp; Package: CL-USER; Base: 10; -*-
+;;; package.lisp --- Package definition
 
-;; Copyright (C) 2011, 2015 Didier Verna
+;; Copyright (C) 2011, 2015, 2023 Didier Verna
 
 ;; Author: Didier Verna <didier@didierverna.net>
 
