@@ -1,6 +1,6 @@
 ### Makefile --- Toplevel directory
 
-## Copyright (C) 2011, 2015 Didier Verna
+## Copyright (C) 2011, 2015, 2023 Didier Verna
 
 ## Author: Didier Verna <didier@didierverna.net>
 
@@ -20,9 +20,9 @@
 ### Code:
 
 PROJECT := asdf-flv
-VERSION := 2.1
+VERSION := 2.2
 
-W3DIR := $(HOME)/www/software/lisp/$(PROJECT)
+W3DIR := $(HOME)/Documents/Science/Sites/lrde/software/lisp/$(PROJECT)
 
 DIST_NAME := $(PROJECT)-$(VERSION)
 TARBALL   := $(DIST_NAME).tar.gz
