@@ -10,4 +10,5 @@ For portability with the Genera system, the
 [GitHub](https://github.com/didierverna/asdf-flv) repository has a
 <kbd>genera</kbd>
 [branch](https://github.com/didierverna/asdf-flv/tree/genera) (thanks to Steve
-Nunez).
+Nunez). *Note: if you're reading this sentence, you are actually viewing said
+branch.*
