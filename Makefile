@@ -20,7 +20,7 @@
 ### Code:
 
 PROJECT := asdf-flv
-VERSION := 2.1
+VERSION := 2.2
 
 W3DIR := $(HOME)/Documents/Science/Sites/lrde/software/lisp/$(PROJECT)
 

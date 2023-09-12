@@ -35,7 +35,7 @@ SET-FILE-LOCAL-VARIABLE(S)."
   :homepage "http://www.lrde.epita.fr/~didier/software/lisp/misc.php#asdf-flv"
   :source-control "https://github.com/didierverna/asdf-flv"
   :license "GNU All Permissive"
-  :version "2.1"
+  :version "2.2"
   :serial t
   :components ((:file "package")
 	       (:file "asdf-flv")))
