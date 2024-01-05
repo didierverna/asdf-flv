@@ -26,6 +26,24 @@
   "List of file-local special variables.")
 
 
+(eval-when (:load-toplevel :compile-toplevel :execute)
+  (unless (find-class 'asdf-flv-mixin nil)
+    (defclass asdf-flv-mixin ()
+      ()))
+  (unless (subtypep 'asdf:cl-source-file 'asdf-flv-mixin)
+    (let ((original-class (find-class 'asdf:cl-source-file)))
+      (setf (find-class 'original-asdf-cl-source-file)
+            original-class
+            (find-class 'asdf:cl-source-file)
+            nil))
+    (#+allegro excl:without-redefinition-warnings
+     #+sbcl locally
+     #+sbcl (declare (sb-ext:muffle-conditions sb-kernel:redefinition-warning))
+     #-(or allegro sbcl) progn
+     (defclass asdf:cl-source-file (asdf-flv-mixin original-asdf-cl-source-file)
+       ()))))
+
+
 (defun make-variable-file-local (symbol)
   "Make special variable named by SYMBOL have a file-local value."
   (pushnew symbol *file-local-variables*))
@@ -44,18 +62,18 @@ SYMBOL need not be quoted."
   "Set special variables named by SYMBOLS as file-local.
 SYMBOLS need not be quoted."
   `(make-variables-file-local ,@(mapcar (lambda (symbol) (list 'quote symbol))
-					symbols)))
+                                        symbols)))
 
 
 (defmethod asdf:perform :around
-    ((operation asdf:load-op) (file asdf:cl-source-file))
+    ((operation asdf:load-op) (file asdf-flv-mixin))
   "Establish new dynamic bindings for file-local variables."
   (progv *file-local-variables*
       (mapcar #'symbol-value *file-local-variables*)
     (call-next-method)))
 
 (defmethod asdf:perform :around
-    ((operation asdf:compile-op) (file asdf:cl-source-file))
+    ((operation asdf:compile-op) (file asdf-flv-mixin))
   "Establish new dynamic bindings for file-local variables."
   (progv *file-local-variables*
       (mapcar #'symbol-value *file-local-variables*)
